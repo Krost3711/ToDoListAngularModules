@@ -1,0 +1,24 @@
+
+@if (estaAgregandoTareaNueva){
+
+  <!--El componente Tareas esta Renderizando al Componente Nueva Tarea con <app-nueva-tarea /> -->>
+  <app-nueva-tarea [idUsuario]="idUsuario" (cerrar)="alCerrarTareaNueva()"/>
+}
+
+<section id="tareas">
+  <header>
+    <h2>Tareas de {{ nombre }}</h2>
+
+    <menu>
+      <button (click)="alIniciarNuevaTarea()">Agregar Tarea Nueva</button>
+    </menu>
+  </header>
+
+  <ul>
+    @for (tarea of tareasUsuarioSelecionado; track tarea.id){
+    <li>
+      <app-tarea [tarea]="tarea"/>
+    </li>
+    }
+  </ul>
+</section>

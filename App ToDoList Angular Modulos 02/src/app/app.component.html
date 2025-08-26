@@ -1,0 +1,33 @@
+<!-- Esta es la Plantilla de la App Global -->
+
+<app-encabezado></app-encabezado>
+<!-- Llamando al Encabezado -->
+
+<main>
+  <ul>
+    <!-- $event es un nombre de reservado proporcionado por Angular -->
+
+    @for (usuario of usuarios; track usuario.id){
+
+    <li id="usuarios">
+      <app-usuario
+        [usuario]="usuario"
+        [seleccionado]="usuario.id === idUsuarioSeleccionado"
+        (seleccion)="alSeleccionarUsuario($event)"
+      />
+    </li>
+    }
+  </ul>
+
+  @if(usuarioSeleccionado){
+
+  <app-tareas 
+  [idUsuario]="usuarioSeleccionado.id"
+  [nombre]="usuarioSeleccionado.nombre" />
+
+  } @else{
+
+    <p id="textoCondicional">Seleciona un Usuario de la Lista</p>
+
+  }
+</main>
